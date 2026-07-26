@@ -1,0 +1,38 @@
+<svg width="100%" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg" role="img">
+<title>CI/CD pipeline flow</title>
+<desc>GitHub Actions trigger runs static checks, then branches into a plan step for pull requests and an apply step for pushes to main.</desc>
+<style>
+  text { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  .th { font-size: 14px; font-weight: 500; }
+  .ts { font-size: 12px; font-weight: 400; }
+  rect { stroke-width: 1; }
+  .c-gray rect { fill: #F1EFE8; stroke: #5F5E5A; }
+  .c-gray .th { fill: #2C2C2A; }
+  .c-gray .ts { fill: #444441; }
+  .c-blue rect { fill: #E6F1FB; stroke: #185FA5; }
+  .c-blue .th { fill: #042C53; }
+  .c-blue .ts { fill: #0C447C; }
+  .c-teal rect { fill: #E1F5EE; stroke: #0F6E56; }
+  .c-teal .th { fill: #04342C; }
+  .c-teal .ts { fill: #085041; }
+  .arr { stroke: #5F5E5A; stroke-width: 1.5; fill: none; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#5F5E5A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<g class="c-gray"><rect x="190" y="20" width="300" height="56" rx="8"/><text class="th" x="340" y="42" text-anchor="middle">GitHub Actions trigger</text><text class="ts" x="340" y="60" text-anchor="middle">Push or pull request to main</text></g>
+<line x1="340" y1="76" x2="340" y2="100" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-blue"><rect x="150" y="100" width="380" height="56" rx="8"/><text class="th" x="340" y="122" text-anchor="middle">Static checks</text><text class="ts" x="340" y="140" text-anchor="middle">fmt &#183; validate &#183; tflint &#183; checkov</text></g>
+
+<line x1="340" y1="156" x2="340" y2="180" class="arr"/>
+<path d="M340 180 L196 180 L196 202" class="arr" marker-end="url(#arrow)"/>
+<path d="M340 180 L484 180 L484 202" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-blue"><rect x="66" y="204" width="260" height="56" rx="8"/><text class="th" x="196" y="226" text-anchor="middle">Pull request</text><text class="ts" x="196" y="244" text-anchor="middle">Uploads plan artifact</text></g>
+
+<g class="c-teal"><rect x="354" y="204" width="260" height="56" rx="8"/><text class="th" x="484" y="226" text-anchor="middle">Push to main</text><text class="ts" x="484" y="244" text-anchor="middle">terraform apply via OIDC</text></g>
+</svg>
